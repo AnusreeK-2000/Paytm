@@ -11,7 +11,7 @@ public interface Api {
 
     //this is the URL of the paytm folder that we added in the server
 
-    String BASE_URL = "https://zealous-aryabhata-1cd525.netlify.app/";
+    String BASE_URL = "https://anusreek-00.github.io/Paytm/";
 
     @FormUrlEncoded
     @POST("generateChecksum.php")
