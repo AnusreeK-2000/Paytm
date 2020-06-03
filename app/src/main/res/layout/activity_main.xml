@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="123dp"
-        android:background="@drawable/physics"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+
         android:padding="4dp" />
 
     <TextView
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/imageView"
-        android:text="Engineering Physics"
+        android:text="Samsung Galaxy S9+ Quad HD+ Super AMOLED (2960x1440) 529 ppi"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="#000000" />
 
@@ -31,7 +32,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imageView"
-        android:text="Text book on engineering physics by V Rajendran"
+        android:text="6.2 Inch, 6GB RAM  64GB"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
     <TextView
@@ -45,7 +46,7 @@
         android:background="@color/colorPrimary"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:text="4.7"
+        android:text="4.8"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
         android:textStyle="bold" />
 
@@ -57,16 +58,122 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/imageView"
-        android:text="10.00"
+        android:text="1000.00"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonBuy"
-        android:layout_toRightOf="@id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewPrice"
+        android:layout_toRightOf="@id/imageView"
         android:text="Buy" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewPrice"
+        android:layout_marginLeft="3dp"
+        android:layout_toEndOf="@+id/textViewPrice"
+        android:layout_toRightOf="@+id/textViewPrice"
+        android:text="Rs."
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBuy"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Id:- "
+                android:textColor="#09719f"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="#fa0612"
+                android:textIsSelectable="true"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customer Id:- "
+                android:textColor="#09719f"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCustId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="#fa0612"
+                android:textIsSelectable="true"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction Response:- "
+                android:textColor="#09719f"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtResponse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Response"
+                android:textColor="#fa0612"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Any Error:-"
+                android:textColor="#09719f"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtError1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Response"
+                android:textColor="#fa0612"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

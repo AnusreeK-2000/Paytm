@@ -2,6 +2,9 @@ package com.example.paytm;
 
 import com.google.gson.annotations.SerializedName;
 
+
+
+
 public class Checksum {
 
     @SerializedName("CHECKSUMHASH")
@@ -31,4 +34,3 @@ public class Checksum {
         return paytStatus;
     }
 }
-

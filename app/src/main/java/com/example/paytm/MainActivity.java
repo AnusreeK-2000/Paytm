@@ -1,11 +1,10 @@
 package com.example.paytm;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
@@ -24,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity implements PaytmPaymentTransactionCallback {
 
     //the textview in the interface where we have the price
-    TextView textViewPrice;
+    TextView textViewPrice, txtResponse, txtError1, txtOrderId, txtCustId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements PaytmPaymentTrans
                 generateCheckSum();
             }
         });
+
+        txtResponse = (TextView) findViewById(R.id.txtResponse);
+        txtError1 = (TextView) findViewById(R.id.txtError1);
+        txtOrderId = (TextView) findViewById(R.id.txtOrderId);
+        txtCustId = (TextView) findViewById(R.id.txtCustId);
+
 
     }
 
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements PaytmPaymentTrans
         //PaytmPGService Service = PaytmPGService.getProductionService();
 
         //creating a hashmap and adding all the values required
-        Map<String, String> paramMap = new HashMap<>();
+        Map<String, String> paramMap = new HashMap<String, String>();
         paramMap.put("MID", Constants.M_ID);
         paramMap.put("ORDER_ID", paytm.getOrderId());
         paramMap.put("CUST_ID", paytm.getCustId());
@@ -121,9 +126,11 @@ public class MainActivity extends AppCompatActivity implements PaytmPaymentTrans
         paramMap.put("CHECKSUMHASH", checksumHash);
         paramMap.put("INDUSTRY_TYPE_ID", paytm.getIndustryTypeId());
 
+        txtOrderId.setText(paytm.getOrderId());
+        txtCustId.setText(paytm.getCustId());
 
         //creating a paytm order object using the hashmap
-        PaytmOrder order = new PaytmOrder(paramMap);
+        PaytmOrder order = new PaytmOrder((HashMap<String, String>) paramMap);
 
         //intializing the paytm service
         Service.initialize(order, null);
@@ -138,35 +145,51 @@ public class MainActivity extends AppCompatActivity implements PaytmPaymentTrans
     public void onTransactionResponse(Bundle bundle) {
 
         Toast.makeText(this, bundle.toString(), Toast.LENGTH_LONG).show();
+
+        txtResponse.setText(bundle.toString());
+
     }
 
     @Override
     public void networkNotAvailable() {
         Toast.makeText(this, "Network error", Toast.LENGTH_LONG).show();
+
+        txtError1.setText("Network Error");
+
     }
 
     @Override
     public void clientAuthenticationFailed(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+
+        txtError1.setText(s);
     }
 
     @Override
     public void someUIErrorOccurred(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+
+        txtError1.setText(s);
     }
 
     @Override
     public void onErrorLoadingWebPage(int i, String s, String s1) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+
+        txtError1.setText(s);
     }
 
     @Override
     public void onBackPressedCancelTransaction() {
         Toast.makeText(this, "Back Pressed", Toast.LENGTH_LONG).show();
+
+        txtError1.setText("Back Pressed");
     }
 
     @Override
     public void onTransactionCancel(String s, Bundle bundle) {
         Toast.makeText(this, s + bundle.toString(), Toast.LENGTH_LONG).show();
+
+        txtError1.setText(s + bundle.toString());
     }
 }

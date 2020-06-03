@@ -7,11 +7,12 @@ import retrofit2.http.POST;
 
 
 
+
 public interface Api {
 
     //this is the URL of the paytm folder that we added in the server
-
-    String BASE_URL = "https://anusreek-00.github.io/Paytm/";
+    //make sure you are using your ip else it will not work
+    String BASE_URL = "http://paytmhyperlocal.unaux.com/paytm/";
 
     @FormUrlEncoded
     @POST("generateChecksum.php")
